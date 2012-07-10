@@ -13,11 +13,11 @@ on Earth (through coordinates or grid locator), and Sunrise, Sunset and Midday t
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 my %coordinates = (
 		long_1 	=> "",
@@ -81,6 +81,7 @@ The $date argument is necessary for the Sun time calculations (Sunrise, Sunset a
 Distances are in kilometers (km) and Miles (mi). Times are in UTC (Universal Time).
 
 An output example:
+
   DATA_BY_COORDINATES()
     compass: S                       # compass direction to point B or destination
     course_dec: 190.94              # direction to destination in decimal degree
@@ -311,9 +312,10 @@ There is not mandatory send a complete hash (4 values), but you will receive a
 hash with the four.
 
 You can use it like this:
+
     my %coord = (
-      Long_1 => "41N23.30",
-      Lat_1  => "2E11.10"
+	Long_1 => "41N23.30",
+      	Lat_1  => "2E11.10"
     );
     my %sexag = $foo->sexag2dec(%coord);
     foreach my $key (sort keys %sexag) {
@@ -563,6 +565,26 @@ sub date_split {
 # ---------------
 #  INTERNAL SUBS
 # ---------------
+
+=head1 Internals subs
+
+=head2 data_constructor
+
+Internal function used by data_by_coordinates() and data_by_locator() to call the others functions and create a response.
+
+=head2 NESW
+
+Internal function to convert degrees to radians.
+
+=head2 check_error
+
+Internal function to check errors in data_by_coordinates() or data_by_locator().
+
+=head2 is_date
+
+Internal function to check if a date is valid.
+
+=cut
 
 sub NESW { 
 	deg2rad($_[0]), deg2rad(90 - $_[1]) 

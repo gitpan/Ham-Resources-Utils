@@ -8,7 +8,7 @@ WriteMakefile(
     AUTHOR              => q{CJUAN <cjuan@cpan.org>},
     VERSION_FROM        => 'lib/Ham/Resources/Utils.pm',
     ABSTRACT_FROM       => 'lib/Ham/Resources/Utils.pm',
-    ($ExtUtils::MakeMaker::VERSION >= 6.3002
+    ($ExtUtils::MakeMaker::VERSION ge '6.3002'
       ? ('LICENSE'=> 'perl')
       : ()),
     PL_FILES            => {},
